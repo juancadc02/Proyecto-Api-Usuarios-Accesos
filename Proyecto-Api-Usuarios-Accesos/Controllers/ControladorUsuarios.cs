@@ -26,6 +26,19 @@ namespace Proyecto_Api_Usuarios_Accesos.Controllers
             return contexto.Usuarios.ToList();
         }
 
+        [HttpPost("añadirUsuario")]
+        public async Task<IActionResult> añadirUsuario([FromBody] Usuarios nuevoUsuario)
+        {
+            if (nuevoUsuario == null)
+            {
+                return BadRequest("Los datos del acceso no son validos");
+
+            }
+            contexto.Usuarios.Add(nuevoUsuario);
+            await contexto.SaveChangesAsync();
+            return Ok("Usuario añadido");
+        }
+
         // GET api/<ControladorUsuarios>/5
         [HttpGet("{id}")]
         public string Get(int id)
