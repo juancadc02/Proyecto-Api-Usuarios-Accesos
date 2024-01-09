@@ -25,6 +25,13 @@ namespace Proyecto_Api_Usuarios_Accesos.Contexto
 
         }
         #endregion
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+
+            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=Proyecto-GestorBiblioteca-LosRapidos;User Id=postgres;Password=1234; SearchPath=public");
+
+        }
+
 
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Accesos> Accesos { get; set; }
